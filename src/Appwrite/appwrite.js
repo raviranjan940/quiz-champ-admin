@@ -4,7 +4,7 @@ class AppwriteClient {
     constructor() {
         this.client = new Client()
             .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-            .setProject(import.meta.env.VITE_PROJECT_ID); // Your project ID
+            .setProject(process.env.REACT_APP_APPWRITE_PROJECT_ID); // Your project ID
 
             this.account = new Account(this.client);
     }
