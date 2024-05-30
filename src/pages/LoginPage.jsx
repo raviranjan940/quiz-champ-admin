@@ -10,6 +10,8 @@ const LoginPage = () => {
   const [onRequest, setOnRequest] = useState(false);
   const [loginProgress, setLoginProgress] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const onSignin = (e) => {
     e.preventDefault();
@@ -92,15 +94,15 @@ const LoginPage = () => {
             <Animate type="fade" sx={{ maxWidth: 400, width: "100%" }}>
               <Box component="form" maxWidth={400} width="100%" onSubmit={onSignin}>
                 <Stack spacing={3}>
-                  <TextField label="username" fullWidth />
-                  <TextField label="password" type="password" fullWidth />
+                  <TextField label="username" onChange={(e) => {setUsername(e.target.value)}} value={username} type="email" fullWidth />
+                  <TextField label="password" onChange={(e) => {setPassword(e.target.value)}} value={password} type="password" fullWidth />
                   <Button type="submit" size="large" variant="contained" color="success">
                     sign in
                   </Button>
                   <Stack direction="row" justifyContent="space-between" alignItems="center">
-                    <FormGroup>
+                    {/* <FormGroup>
                       <FormControlLabel control={<Checkbox />} label="Remember me" />
-                    </FormGroup>
+                    </FormGroup> */}
                     <Typography color="error" fontWeight="bold">
                       <Link to="#">
                         Forgot password?
@@ -111,24 +113,7 @@ const LoginPage = () => {
               </Box>
             </Animate>
           </Box>
-          {/* form */}
 
-          {/* footer */}
-          <Box sx={{ textAlign: "center", p: 5, zIndex: 2 }}>
-            <Animate type="fade" delay={1}>
-              <Typography
-                display="inline"
-                fontWeight="bold"
-                sx={{ "& > a": { color: colors.red[900], ml: "5px" } }}
-              >
-                Don't have an account -
-                <Link to="#">
-                  Register now
-                </Link>
-              </Typography>
-            </Animate>
-          </Box>
-          {/* footer */}
 
           {/* loading box */}
           {onRequest && (
